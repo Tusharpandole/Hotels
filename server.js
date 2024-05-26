@@ -46,10 +46,12 @@
 // const objectToConvert = {name : "Alice" , age : 25};
 // const jsonStringified = JSON.stringify(objectToConvert); //convert object to JSON string 
 // console.log(jsonStringified) ;
-
+require('dotenv').config();
 const express = require('express')
 const app = express() //naksha  
 const db = require('./db');
+
+const PORT = process.env.PORT || 3000;
 
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());//req.body 
@@ -76,7 +78,8 @@ app.use('/person' ,personRoutes);
 const menuRoutes = require('./routes/menuRoutes');
 app.use('/menu', menuRoutes);
  
-app.listen(3000 , ()=>{
+
+app.listen(PORT , ()=>{
     console.log('listening on port 3000')
 })
 
